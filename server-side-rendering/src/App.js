@@ -1,24 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route } from "react-router-dom";
+import { createGlobalStyle } from "styled-components";
+
+import Menu from "./components/Menu";
+import BluePage from "./pages/BluePage";
+import RedPage from "./pages/RedPage";
+
+const GlobalStyle = createGlobalStyle`
+
+  body{
+    margin: 0;
+  }
+
+  .Box {
+    font-size: 1.5 rem;
+    color: #fff;
+    width: 128px;
+    height: 128px;
+
+    margin: 0 auto; 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Red {
+    background-color:red;
+  }
+
+  .Blue {
+    background-color:blue;
+  }
+`;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalStyle />
+      <Menu /> <hr />
+      <Route path="/red" component={RedPage} />
+      <Route path="/blue" component={BluePage} />
     </div>
   );
 }
